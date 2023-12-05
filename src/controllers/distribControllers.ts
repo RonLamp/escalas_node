@@ -139,22 +139,21 @@ export async function createDistrib(req: Request, res: Response) {
   }
 }
 
-/*
-export async function updateScale(req: Request, res: Response) {
-	try {
-		const id = req.params.id as string;
-		const data = req.body;
-		const scale = await prisma.scale.update({
-			where: { id: id },
-			data: data,
-		});
-		return res.status(200).json(scale);
-	} catch (e: any) {
-		Logger.error(`Erro no sistema ${e.message}`);
-		return res.status(400).json({ error: e.message });
-	}
+export async function updateDistrib(req: Request, res: Response) {
+  try {
+    const id = req.params.id as string;
+    const data = req.body;
+    const distrib = await prisma.distrib.update({
+      where: { id: id },
+      data: data,
+    });
+    return res.status(200).json(distrib);
+  } catch (e: any) {
+    Logger.error(`Erro no sistema ${e.message}`);
+    return res.status(400).json({ error: e.message });
+  }
 }
-*/
+
 export async function deleteDistrib(req: Request, res: Response) {
   try {
     const id = req.params.id as string;
