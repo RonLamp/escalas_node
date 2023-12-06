@@ -85,6 +85,9 @@ import {
 } from "../controllers/distribControllers";
 import { create } from "domain";
 
+import { printValidation } from "../middleware/printValidation";
+import { getPrints } from "../controllers/printControllers";
+
 //---- Close Routes propriamente ditas -------------------------------------
 // a chamada para close routes deve ser feita com o token no header
 // e a definição de rotas deve ser feita com o prefixo /api oriunda de openRoutes
@@ -196,7 +199,10 @@ export default closeRoutes
   .post("/distribs/:groupid", distribDatesValidation(), validate, getDistribs)
   .post("/distrib/", distribCreateValidation(), validate, createDistrib)
   .delete("/distrib/:id", idParamValidation(), validate, deleteDistrib)
-  .patch("/distrib/:id", idParamValidation(), validate, updateDistrib);
+  .patch("/distrib/:id", idParamValidation(), validate, updateDistrib)
+
+  //--- print ROUTES --------------------------------------------------------
+  .post("/prints/:groupid/:alocid", printValidation(), validate, getPrints);
 
 // Middleware para lidar com rotas não encontradas
 closeRoutes.use((req, res) => {
