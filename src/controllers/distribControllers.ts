@@ -157,11 +157,14 @@ export async function updateDistrib(req: Request, res: Response) {
 export async function deleteDistrib(req: Request, res: Response) {
   try {
     const id = req.params.id as string;
-    const distrib = await prisma.distrib.update({
+    // const distrib = await prisma.distrib.update({
+    //   where: { id: id },
+    //   data: {
+    //     deletedAt: new Date(),
+    //   },
+    // });
+    const distrib = await prisma.distrib.delete({
       where: { id: id },
-      data: {
-        deletedAt: new Date(),
-      },
     });
     return res.status(200).json(distrib);
   } catch (e: any) {
