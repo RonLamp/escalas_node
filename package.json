@@ -5,9 +5,10 @@
   "main": "node.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node deploy/node.js",
-    "deploy": "webpack --config webpack.config.js",
-    "dev": "tsx watch src/node.ts"
+    "dev": "tsx watch src/node.ts",
+    "build": "webpack --config webpack.config.build.js",
+    "devbuild": "node build/node.js",
+    "prod": "webpack --config webpack.config.prod.js"
   },
   "author": "RonLamp",
   "license": "ISC",
@@ -42,6 +43,7 @@
     "winston": "^3.11.0"
   },
   "prisma": {
-    "seed": "ts-node seed.ts"
+    "seed": "ts-node seed.ts",
+    "schema": "src/prisma/schema.prisma"
   }
 }

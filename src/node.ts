@@ -31,21 +31,21 @@ app.use("/api", closeRoutes);
 
 //--- Middleware para tratar erros de rotas não encontradas ------------------
 app.use((req: Request, res: Response, next: NextFunction) => {
-	res.status(404).sendFile(path.join(__basedir + "/public/404.html"));
+  res.status(404).sendFile(path.join(__basedir + "/public/404.html"));
 });
 
 //--- Listen server
-const PORT = process.env.PORT; // || 3030;
+const PORT = process.env.PORT || 3000;
 const APP_ORIGIN = process.env.APP_ORIGIN;
 
 app.listen(PORT, () => {
-	console.log(
-		`Server running on port:${PORT} date: ${new Date().toISOString()} APP_ORIGIN: ${APP_ORIGIN}`
-	);
+  console.log(
+    `Server running on port:${PORT} date: ${new Date().toISOString()} APP_ORIGIN: ${APP_ORIGIN}`
+  );
 });
 
 // Feche a conexão do Prisma Client quando o aplicativo for encerrado
 process.on("SIGINT", () => {
-	prisma.$disconnect();
-	process.exit();
+  prisma.$disconnect();
+  process.exit();
 });

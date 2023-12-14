@@ -1,28 +1,27 @@
 import { CorsOptions } from "cors";
 
 var whitelist: string[] = [
-	"http://localhost:5173",
-	"http://localhost:3000",
-	"https://escala.rc12.tech",
-	"https://accounts.google.com",
+  "http://localhost:5173",
+  "https://escalas.rc12.tech",
+  "https://accounts.google.com",
 ];
 
 export const corsOptions: CorsOptions = {
-	origin: whitelist,
-	// origin: (origin, callback) => {
-	// 	if (!origin || whitelist.indexOf(origin) !== -1) {
-	// 		callback(null, true);
-	// 	} else {
-	// 		callback(new Error("Not allowed by CORS"));
-	// 	}
-	// },
-	methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-	allowedHeaders: ["Content-Type", "Authorization", "authorization"],
-	exposedHeaders: [],
-	maxAge: 86400,
-	credentials: false,
-	preflightContinue: false,
-	optionsSuccessStatus: 204,
+  origin: whitelist,
+  // origin: (origin, callback) => {
+  // 	if (!origin || whitelist.indexOf(origin) !== -1) {
+  // 		callback(null, true);
+  // 	} else {
+  // 		callback(new Error("Not allowed by CORS"));
+  // 	}
+  // },
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: ["Content-Type", "Authorization", "authorization"],
+  exposedHeaders: [],
+  maxAge: 86400,
+  credentials: false,
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
 };
 
 /**
